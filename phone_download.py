@@ -10,7 +10,7 @@ from pycocotools.coco import COCO
 import requests
 import csv
 
-coco = COCO('./data/coco/annotations/instances_val2017.json')
+coco = COCO('./data/coco/annotations/instances_train2017.json')
 cats = coco.loadCats(coco.getCatIds())
 nms=[cat['name'] for cat in cats]
 print('COCO categories: \n{}\n'.format(' '.join(nms)))
@@ -27,7 +27,7 @@ print("images: ", images)
 #         handler.write(img_data)
 
 #Download annotations
-with open('annotations_download_' + 'cell phone' + '.csv', mode='w', newline='') as annot:
+with open('annotations_download_' + 'cell_phone' + '.csv', mode='w', newline='') as annot:
     for im in images:
         annIds = coco.getAnnIds(imgIds=im['id'], catIds=catIds, iscrowd=None)
         anns = coco.loadAnns(annIds)
